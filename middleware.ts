@@ -3,27 +3,24 @@ import type { NextRequest } from "next/server"
 import { getToken } from "next-auth/jwt"
 
 export async function middleware(request: NextRequest) {
-  console.log("NEXTAUTH_SECRET loaded:", !!process.env.NEXTAUTH_SECRET)
-
   const session = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
   })
-
-  console.log("Middleware Path:", request.nextUrl.pathname)
-  console.log("Session:", session)
 
   const isAuthenticated = !!session
   const isLoginPage = request.nextUrl.pathname.startsWith("/login")
   const isRoot = request.nextUrl.pathname === "/"
 
   if (!isAuthenticated) {
-    if (isLoginPage) {
-      return NextResponse.next()
-    }
+    // allow user to visit login
+    if (isLoginPage) return NextResponse.next()
+
+    // block everything else
     return NextResponse.redirect(new URL("/login", request.url))
   }
 
+  // redirect logged-in users away from login/root
   if (isLoginPage || isRoot) {
     return NextResponse.redirect(new URL("/instructions", request.url))
   }
@@ -33,4 +30,5 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: ["/", "/login", "/instructions/:path*", "/dashboard/:path*"],
+  runtime: "nodejs",
 }
