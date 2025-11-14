@@ -37,26 +37,23 @@ const ChooseAnswer = ({
           Choose the answer:
         </h2>
         <div className="space-y-4 mb-10">
-          {/* 4. Add 'index' to map to get A, B, C... */}
           {options.map((option, index) => (
             <div
               key={option.id}
-              // 2. CALL the prop function on click
               onClick={() => onAnswerSelect(option.id)}
               className={`
                 group flex items-center justify-between p-4 rounded-lg border-2 cursor-pointer transition-all duration-200
                 ${
-                  selectedOptionId === option.id // 3. USE the prop for styling
-                    ? "border-blue-500 bg-blue-50 shadow-md" // Changed style to be more obvious
+                  selectedOptionId === option.id
+                    ? "border-blue-500 bg-blue-50 shadow-md"
                     : "border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50"
                 }
               `}
             >
               <span className="text-slate-700 font-semibold text-lg">
-                {/* Use index to create A, B, C... */}
                 {String.fromCharCode(65 + index)}.{" "}
                 <span className="text-slate-600 font-medium ml-1">
-                  {option.option} {/* No optional chaining needed */}
+                  {option.option}
                 </span>
               </span>
 
@@ -64,14 +61,14 @@ const ChooseAnswer = ({
                 className={`
                   w-6 h-6 rounded-full border-2 flex items-center justify-center
                   ${
-                    selectedOptionId === option.id // 3. USE the prop for styling
-                      ? "border-blue-600" // Changed to blue
+                    selectedOptionId === option.id
+                      ? "border-blue-600"
                       : "border-gray-400"
                   }
                 `}
               >
-                {selectedOptionId === option.id && ( // 3. USE the prop
-                  <div className="w-3 h-3 bg-blue-600 rounded-full" /> // Changed to blue
+                {selectedOptionId === option.id && (
+                  <div className="w-3 h-3 bg-blue-600 rounded-full" />
                 )}
               </div>
             </div>

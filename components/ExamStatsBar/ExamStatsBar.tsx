@@ -1,4 +1,3 @@
-// Helper function to format time
 const formatTime = (timeInMinutes: number) => {
   const minutes = String(timeInMinutes).padStart(2, "0")
   return `${minutes}:00`
