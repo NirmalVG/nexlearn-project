@@ -55,7 +55,7 @@ yarn install
 ### 3. Set up Environment Variables
 
 # The base URL for the backend API
-NEXT_PUBLIC_API_URL=[https://nexlearn.noviindusdemosites.in](https://nexlearn.noviindusdemosites.in)
+NEXT_PUBLIC_API_URL=https://nexlearn.noviindusdemosites.in
 
 # NextAuth.js configuration
 # Generate a secret: `openssl rand -base64 32`
