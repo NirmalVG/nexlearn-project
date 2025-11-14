@@ -47,7 +47,11 @@ const ReadComprehensive = ({ question }: { question: Question }) => {
                 Comprehensive Paragraph
               </h3>
               <hr className="border-b mt-2 border-[#f2f2f2] mb-5" />
-              {question?.comprehension}
+              {question?.comprehension || (
+                <p className="text-gray-500 italic dark:text-gray-400">
+                  No comprehension paragraph available for this item.
+                </p>
+              )}
               <div className="w-full flex justify-end">
                 <button
                   onClick={() => setOpen(false)}
