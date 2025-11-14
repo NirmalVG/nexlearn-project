@@ -46,13 +46,6 @@ export default function ResultPage() {
   const { id: examHistoryId } = params
 
   const { result, examMetaData } = useAppSelector((state) => state.exam)
-  console.log(
-    result,
-    examMetaData,
-    result?.exam_history_id,
-    examHistoryId,
-    "resultttttt"
-  )
 
   if (!result || !examMetaData || result.exam_history_id != examHistoryId) {
     return (

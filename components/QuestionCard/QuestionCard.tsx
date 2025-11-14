@@ -8,7 +8,6 @@ interface QuestionCardProps {
 }
 
 const QuestionCard = ({ question, questionNumber }: QuestionCardProps) => {
-  console.log(question, "adjfjdfk")
   return (
     <div className="bg-white mt-5 p-5 rounded-lg">
       <ReadComprehensive question={question} />
