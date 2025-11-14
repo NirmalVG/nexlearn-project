@@ -12,24 +12,33 @@ export const authOptions: NextAuthOptions = {
         user: { label: "User Data", type: "text" },
       },
       async authorize(credentials) {
-        if (!credentials?.accessToken || !credentials?.user) {
+        console.log("Authorize credentials:", {
+          hasAccessToken: !!credentials?.accessToken,
+          user: credentials?.user,
+        })
+
+        if (!credentials?.accessToken) {
+          console.error("Authorize failure: Missing accessToken")
           return null
         }
 
-        try {
-          const parsedUser = JSON.parse(credentials.user)
+        let parsedUser = {}
 
-          return {
-            id: parsedUser.id || "1",
-            name: parsedUser.name,
-            email: parsedUser.email,
-            accessToken: credentials.accessToken,
-            refreshToken: credentials.refreshToken,
-            ...parsedUser,
+        if (credentials.user) {
+          try {
+            parsedUser = JSON.parse(credentials.user)
+          } catch (e) {
+            console.warn("Authorize warning: Could not parse user JSON", e)
+            parsedUser = credentials.user as any
           }
-        } catch (e) {
-          console.error("Error parsing user data in authorize:", e)
-          return null
+        }
+
+        return {
+          id: (parsedUser as any).id || "default-user-id",
+          accessToken: credentials.accessToken,
+          refreshToken: credentials.refreshToken,
+          user: parsedUser,
+          ...parsedUser,
         }
       },
     }),
