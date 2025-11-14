@@ -2,6 +2,17 @@ import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
 export const authOptions: NextAuthOptions = {
+  // --- 1. ADD THIS SECRET ---
+  // This tells NextAuth to use the environment variable.
+  // This is mandatory for Vercel deployment.
+  secret: process.env.NEXTAUTH_SECRET,
+
+  // --- 2. ADD THIS SESSION STRATEGY ---
+  // Explicitly tell NextAuth to use JWTs.
+  session: {
+    strategy: "jwt",
+  },
+
   providers: [
     CredentialsProvider({
       id: "otp-login",
