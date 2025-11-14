@@ -2,8 +2,6 @@
 
 A responsive online exam platform built with Next.js (App Router), Redux Toolkit, and Tailwind CSS. It features a complete user authentication flow using phone OTP and a full-featured, persistent exam interface.
 
-!(https://i.imgur.com/example.png)
-
 ## ✨ Key Features
 
 - **📱 Phone OTP Authentication:** Secure login/signup flow using a mobile number and one-time password.
