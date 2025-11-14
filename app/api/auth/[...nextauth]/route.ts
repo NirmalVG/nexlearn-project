@@ -19,13 +19,10 @@ export const authOptions: NextAuthOptions = {
         user: { label: "User Data", type: "text" },
       },
       async authorize(credentials) {
-        console.log("Authorize credentials:", {
-          hasAccessToken: !!credentials?.accessToken,
-          user: credentials?.user,
-        })
+        console.log("🔥 RAW CREDENTIALS RECEIVED:", credentials)
 
         if (!credentials?.accessToken) {
-          console.error("Authorize failure: Missing accessToken")
+          console.error("❌ Missing accessToken")
           return null
         }
 

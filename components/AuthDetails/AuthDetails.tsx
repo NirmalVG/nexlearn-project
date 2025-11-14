@@ -119,9 +119,10 @@ const AuthDetails = () => {
   ) => {
     const result = await signIn("otp-login", {
       redirect: false,
+      callbackUrl: "/instructions",
       accessToken: accessToken || "",
       refreshToken: refreshToken || "",
-      user: JSON.stringify(user),
+      user: JSON.stringify({ mobile: user.mobile }),
     })
 
     if (result?.error) {
