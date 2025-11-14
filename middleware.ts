@@ -13,14 +13,10 @@ export async function middleware(request: NextRequest) {
   const isRoot = request.nextUrl.pathname === "/"
 
   if (!isAuthenticated) {
-    // allow user to visit login
     if (isLoginPage) return NextResponse.next()
-
-    // block everything else
     return NextResponse.redirect(new URL("/login", request.url))
   }
 
-  // redirect logged-in users away from login/root
   if (isLoginPage || isRoot) {
     return NextResponse.redirect(new URL("/instructions", request.url))
   }
@@ -29,6 +25,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/login", "/instructions/:path*", "/dashboard/:path*"],
+  matcher: ["/((?!api/auth|_next|favicon.ico|.*\\..*).*)"],
   runtime: "nodejs",
 }
