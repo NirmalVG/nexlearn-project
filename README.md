@@ -42,6 +42,7 @@ A responsive online exam platform built with Next.js (App Router), Redux Toolkit
 ```bash
 git clone [https://github.com/your-username/nexlearn-project.git](https://github.com/your-username/nexlearn-project.git)
 cd nexlearn-project
+```
 
 ### 2. Install dependencies
 
@@ -49,3 +50,36 @@ cd nexlearn-project
 npm install
 # or
 yarn install
+```
+
+### 3. Set up Environment Variables
+
+# The base URL for the backend API
+NEXT_PUBLIC_API_URL=[https://nexlearn.noviindusdemosites.in](https://nexlearn.noviindusdemosites.in)
+
+# NextAuth.js configuration
+# Generate a secret: `openssl rand -base64 32`
+NEXTAUTH_SECRET=your_super_secret_string_here
+NEXTAUTH_URL=http://localhost:3000
+
+### 4. Run the development server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+## 🔧 Project Structure
+
+* `/src/app`: Contains all pages and routes (App Router).
+    * `/login`: The authentication page.
+    * `/instructions`: The pre-exam instructions page (clears old state).
+    * `/mcq`: The main exam interface.
+    * `/results/[id]`: The dynamic results page.
+* `/src/components`: Reusable components (e.g., `QuestionPalette`, `SubmitModal`).
+* `/src/redux`: Contains all Redux Toolkit logic.
+    * `/slices`: Slices for `authSlice` and `examSlice`.
+    * `/store.ts`: Store configuration with `redux-persist`.
+* `/src/api`: Contains the configured `axiosInstance` for API calls.
+* `/src/middleware.ts`: Handles route protection for authenticated users.
