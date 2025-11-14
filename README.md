@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+NexLearn: Online Exam Platform
+A responsive online exam platform built with Next.js (App Router), Redux Toolkit, and Tailwind CSS. It features a complete user authentication flow using phone OTP and a full-featured, persistent exam interface.
 
-## Getting Started
+✨ Key Features
+📱 Phone OTP Authentication: Secure login/signup flow using a mobile number and one-time password.
 
-First, run the development server:
+🔐 Session Management: Uses NextAuth.js to manage user sessions.
 
-```bash
+👤 User Profiles: Users can create and update their profiles, including a profile image upload.
+
+📚 Dynamic Exam Module:
+
+Fetches questions and exam rules (time, marks) from a live API.
+
+Includes a countdown timer that auto-submits when time runs out.
+
+Features a "Mark for Review" option.
+
+🎨 Question Palette: A responsive grid that visualizes the status of every question (Answered, Not Answered, Not Visited, Marked for Review).
+
+💾 Persistent State: Uses redux-persist to save the exam state (result, examMetaData) to localStorage, allowing users to refresh the results page.
+
+📊 Confirmation & Results:
+
+A confirmation modal appears before final submission, showing a summary of the user's attempt.
+
+An instant, shareable results page displays the score, correct, incorrect, and unattended answers.
+
+📱 Responsive Design: Fully responsive layout for all components, from the login page to the exam interface.
+
+🔒 Protected Routes: Middleware handles redirecting unauthenticated users to the login page.
+
+🚀 Tech Stack
+Framework: Next.js (App Router)
+
+Language: TypeScript
+
+State Management: Redux Toolkit
+
+State Persistence: Redux Persist
+
+Authentication: NextAuth.js
+
+Styling: Tailwind CSS
+
+Data Fetching: Axios
+
+Icons: Lucide React
+
+📦 Getting Started
+1. Clone the repository
+Bash
+
+git clone https://github.com/your-username/nexlearn-project.git
+cd nexlearn-project
+2. Install dependencies
+Bash
+
+npm install
+# or
+yarn install
+3. Set up Environment Variables
+Create a file named .env.local in the root of your project and add the following variables.
+
+Code snippet
+
+# The base URL for the backend API
+NEXT_PUBLIC_API_URL=https://nexlearn.noviindusdemosites.in
+
+# NextAuth.js configuration
+# Generate a secret: `openssl rand -base64 32`
+NEXTAUTH_SECRET=your_super_secret_string_here
+NEXTAUTH_URL=http://localhost:3000
+4. Run the development server
+Bash
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 in your browser to see the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🔧 Project Structure
+/src/app: Contains all pages and routes (App Router).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+/login: The authentication page.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+/instructions: The pre-exam instructions page (clears old state).
 
-## Learn More
+/mcq: The main exam interface.
 
-To learn more about Next.js, take a look at the following resources:
+/results/[id]: The dynamic results page.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+/src/components: Reusable components (e.g., QuestionPalette, SubmitModal).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+/src/redux: Contains all Redux Toolkit logic.
 
-## Deploy on Vercel
+/slices: Slices for authSlice and examSlice.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+/store.ts: Store configuration with redux-persist.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+/src/api: Contains the configured axiosInstance for API calls.
+
+/src/middleware.ts: Handles route protection for authenticated users.
