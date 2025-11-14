@@ -2,8 +2,6 @@
 
 A responsive online exam platform built with Next.js (App Router), Redux Toolkit, and Tailwind CSS. It features a complete user authentication flow using phone OTP and a full-featured, persistent exam interface.
 
-!(https://i.imgur.com/example.png)
-
 ## ✨ Key Features
 
 - **📱 Phone OTP Authentication:** Secure login/signup flow using a mobile number and one-time password.
@@ -14,7 +12,6 @@ A responsive online exam platform built with Next.js (App Router), Redux Toolkit
   - Includes a countdown timer that auto-submits when time runs out.
   - Features a "Mark for Review" option.
 - **🎨 Question Palette:** A responsive grid that visualizes the status of every question (Answered, Not Answered, Not Visited, Marked for Review).
-- **💾 Persistent State:** Uses `redux-persist` to save the exam state (`result`, `examMetaData`) to `localStorage`, allowing users to refresh the results page.
 - **📊 Confirmation & Results:**
   - A confirmation modal appears before final submission, showing a summary of the user's attempt.
   - An instant, shareable results page displays the score, correct, incorrect, and unattended answers.
