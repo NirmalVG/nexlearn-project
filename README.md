@@ -42,3 +42,10 @@ A responsive online exam platform built with Next.js (App Router), Redux Toolkit
 ```bash
 git clone [https://github.com/your-username/nexlearn-project.git](https://github.com/your-username/nexlearn-project.git)
 cd nexlearn-project
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
