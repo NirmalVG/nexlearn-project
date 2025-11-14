@@ -11,7 +11,7 @@ import { AxiosError } from "axios"
 
 interface ExamState {
   questions: Question[]
-  questions_count: number // <-- ADD THIS
+  questions_count: number
   examMetaData: {
     total_marks: number
     total_time: number
@@ -25,15 +25,13 @@ interface ExamState {
 
 const initialState: ExamState = {
   questions: [],
-  questions_count: 0, // <-- ADD THIS
+  questions_count: 0,
   examMetaData: null,
   result: null,
   loading: false,
   error: null,
   submissionSuccess: false,
 }
-
-// --- Thunks ---
 
 export const fetchQuestions = createAsyncThunk<
   QuestionListResponse,
@@ -57,7 +55,6 @@ export const submitAnswers = createAsyncThunk<
   { rejectValue: string }
 >("exam/submit", async (answers, { rejectWithValue }) => {
   try {
-    // API requires answers to be a JSON stringified array inside FormData
     const formData = new FormData()
     formData.append("answers", JSON.stringify(answers))
 
@@ -72,16 +69,13 @@ export const submitAnswers = createAsyncThunk<
   }
 })
 
-// --- Slice ---
-
 const examSlice = createSlice({
   name: "exam",
   initialState,
   reducers: {
     clearExamState: (state) => {
-      // <-- MAKE SURE THIS IS HERE
       state.questions = []
-      state.questions_count = 0 // <-- ADD THIS
+      state.questions_count = 0
       state.examMetaData = null
       state.result = null
       state.loading = false
@@ -96,7 +90,6 @@ const examSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Fetch Questions
       .addCase(fetchQuestions.pending, (state) => {
         state.loading = true
         state.error = null
@@ -104,7 +97,7 @@ const examSlice = createSlice({
       .addCase(fetchQuestions.fulfilled, (state, action) => {
         state.loading = false
         state.questions = action.payload.questions
-        state.questions_count = action.payload.questions_count // <-- ADD THIS
+        state.questions_count = action.payload.questions_count
         state.examMetaData = {
           total_marks: action.payload.total_marks,
           total_time: action.payload.total_time,
@@ -116,7 +109,6 @@ const examSlice = createSlice({
         state.error = action.payload || "Error fetching exam"
       })
 
-      // Submit Answers
       .addCase(submitAnswers.pending, (state) => {
         state.loading = true
         state.error = null

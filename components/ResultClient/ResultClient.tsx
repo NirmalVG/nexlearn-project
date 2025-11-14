@@ -60,7 +60,6 @@ export default function ResultClient() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background-bg p-4">
       <div className="w-full max-w-md overflow-hidden bg-white">
-        {/* Banner */}
         <div className="rounded-xl bg-gradient-to-r from-[#177A9C] via-[#20384a] to-[#1c3141] p-6 text-center text-white">
           <h2 className="text-lg font-medium opacity-80">Marks Obtained:</h2>
           <div className="mt-2 text-6xl font-bold">
@@ -68,7 +67,6 @@ export default function ResultClient() {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="space-y-5 p-6 bg-background-bg">
           <StatRow
             icon={HelpCircle}

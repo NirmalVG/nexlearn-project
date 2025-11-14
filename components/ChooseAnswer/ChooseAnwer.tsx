@@ -1,6 +1,4 @@
 "use client"
-// No longer need useState
-// import { useState } from "react"
 
 interface Option {
   id: number
@@ -10,7 +8,7 @@ interface Option {
 interface ChooseAnswerProps {
   options: Option[]
   selectedOptionId: number | null
-  onAnswerSelect: (optionId: number) => void // This will now be used
+  onAnswerSelect: (optionId: number) => void
   onMarkForReview: () => void
   isMarked: boolean
   onNext: () => void

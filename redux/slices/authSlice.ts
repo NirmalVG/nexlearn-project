@@ -10,19 +10,17 @@ import {
 } from "../types"
 import axios, { AxiosError } from "axios"
 
-// Define State Interface
 interface AuthState {
   user: UserProfile | null
   token: string | null
   isAuthenticated: boolean
   authStep: "INPUT_MOBILE" | "INPUT_OTP" | "CREATE_PROFILE" | "LOGGED_IN"
-  mobile: string | null // Temp storage for flow
+  mobile: string | null
   loading: boolean
   error: string | null
   message: string | null
 }
 
-// Initial State
 const initialState: AuthState = {
   user: null,
   token:
@@ -35,8 +33,6 @@ const initialState: AuthState = {
   error: null,
   message: null,
 }
-
-// --- Thunks ---
 
 export const sendOtp = createAsyncThunk<
   SendOtpResponse,

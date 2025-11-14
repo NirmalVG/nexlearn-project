@@ -1,12 +1,10 @@
-// --- Common ---
 export interface ApiErrorResponse {
   success: boolean
   message: string
 }
 
-// --- Auth ---
 export interface UserProfile {
-  id: number // Assuming ID exists, based on typical APIs
+  id: number
   name: string
   email: string
   mobile: string

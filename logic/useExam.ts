@@ -23,12 +23,10 @@ export default function useExam() {
 
   const currentQuestion: Question | undefined = questions[currentQuestionIndex]
 
-  // Fetch questions
   useEffect(() => {
     dispatch(fetchQuestions())
   }, [dispatch])
 
-  // Initialize answers + timer
   useEffect(() => {
     if (examMetaData && questions.length > 0) {
       if (timeLeft === null) {
@@ -48,7 +46,6 @@ export default function useExam() {
     }
   }, [examMetaData, questions, currentQuestion])
 
-  // Timer countdown
   useEffect(() => {
     if (timeLeft === null || timeLeft <= 0) return
 
@@ -129,13 +126,11 @@ export default function useExam() {
     : false
 
   return {
-    // Redux/State
     loading,
     error,
     questions,
     examMetaData,
 
-    // Question Data
     currentQuestion,
     currentQuestionIndex,
     answers,
@@ -143,13 +138,11 @@ export default function useExam() {
     visited,
     timeLeft,
 
-    // UI State
     isMarked,
     isSubmitModalOpen,
     answeredCount,
     markedCount,
 
-    // Handlers
     handleAnswerSelect,
     handleMarkForReview,
     handleNext,
