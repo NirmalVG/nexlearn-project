@@ -42,7 +42,7 @@ const QuestionPalette = ({
       "w-full aspect-square flex items-center justify-center rounded-md font-medium cursor-pointer transition-all text-sm "
 
     if (isAnswered && isMarked) {
-      baseClass += "bg-purple-600 text-white relative"
+      baseClass += "bg-purple-600 text-white border-green-400 border-5"
     } else if (isMarked) {
       baseClass += "bg-purple-600 text-white"
     } else if (isAnswered) {
@@ -108,9 +108,7 @@ const QuestionPalette = ({
           <p className="text-sm text-gray-600">Mark for Review</p>
         </div>
         <div className="flex gap-2 items-center">
-          <div className="relative w-4 h-4 bg-purple-600 rounded-sm">
-            <div className="absolute bottom-0.5 right-0.5 w-1.5 h-1.5 bg-green-400 rounded-full"></div>
-          </div>
+          <div className="relative w-4 h-4 bg-purple-600 rounded-sm border-green-400 border-3"></div>
           <p className="text-sm text-gray-600">Answered and Marked</p>
         </div>
       </div>
