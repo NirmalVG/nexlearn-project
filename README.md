@@ -28,7 +28,6 @@ A responsive online exam platform built with Next.js (App Router), Redux Toolkit
 - **Framework:** [Next.js](https://nextjs.org/) (App Router)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
 - **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
-- **State Persistence:** [Redux Persist](https://github.com/rt2zz/redux-persist)
 - **Authentication:** [NextAuth.js](https://next-auth.js.org/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Data Fetching:** [Axios](https://axios-http.com/)
@@ -64,7 +63,6 @@ NEXT_PUBLIC_API_URL=https://nexlearn.noviindusdemosites.in
 # Generate a secret: `openssl rand -base64 32`
 
 NEXTAUTH_SECRET=your_super_secret_string_here
-NEXTAUTH_URL=http://localhost:3000
 
 ### 4. Run the development server
 
