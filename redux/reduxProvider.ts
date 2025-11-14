@@ -1,0 +1,12 @@
+"use client"
+import { Provider } from "react-redux"
+import { store } from "./store"
+import React from "react"
+
+interface ReduxProviderProps {
+  children: React.ReactNode
+}
+
+export default function ReduxProvider({ children }: ReduxProviderProps) {
+  return React.createElement(Provider, { store, children })
+}
