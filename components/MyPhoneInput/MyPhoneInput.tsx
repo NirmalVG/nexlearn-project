@@ -1,11 +1,10 @@
 "use client"
 import PhoneInput from "react-phone-number-input"
 import { useState } from "react"
-import { Check } from "lucide-react"
 
 import "./MyPhoneInput.css"
 
-const MyPhoneInput = ({ setMobile }: any) => {
+const PhoneInputComponent = ({ setMobile }: any) => {
   const [value, setValue] = useState<string | undefined>()
   const [country, setCountry] = useState<string>("IN")
 
@@ -28,7 +27,6 @@ const MyPhoneInput = ({ setMobile }: any) => {
           z-10
         "
         >
-          <Check className="w-3.5 h-3.5 text-green-500" strokeWidth={3} />
           Phone number
         </label>
         <div
@@ -65,4 +63,4 @@ const MyPhoneInput = ({ setMobile }: any) => {
   )
 }
 
-export default MyPhoneInput
+export default PhoneInputComponent
